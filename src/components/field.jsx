@@ -7,29 +7,15 @@ import { Progress } from '@/components/ui/progress.jsx'
 import { Separator } from '@/components/ui/separator.jsx'
 import PropTypes from 'prop-types'
 import { useGames } from '@/lib/hooks/useGames.js'
+import { useNextGames } from '@/lib/hooks/useNextGames.js'
 import { useTime } from '@/lib/hooks/useTime.js'
-
-function useRelevantGames(games, index, now) {
-  const gamesOnField = games.filter(game => game.field === parseInt(index)).sort(game => game.startTime)
-  const currentGames = gamesOnField.filter(game => {
-    return now >= game.startTime && now <= game.endTime
-  })
-  const cGame = currentGames.length > 0 ? currentGames[0] : undefined
-  const n1Game = getNextGame(gamesOnField, cGame, now)
-  const n2Game = getNextGame(gamesOnField, n1Game, now)
-
-  return { cGame, n1Game, n2Game }
-}
-
-function getNextGame(games, currentGame, now) {
-  if (!games) return undefined
-  return games.find(it => (currentGame ? it.startTime > currentGame.startTime : it.startTime > now))
-}
 
 export default function Field({ className, index, ...props }) {
   const games = useGames()
   const now = useTime()
-  const { cGame, n1Game, n2Game } = useRelevantGames(games, index, now)
+
+  const gamesOnField = games.filter(game => game.field === parseInt(index)).sort(game => game.startTime)
+  const { cGame, n1Game, n2Game } = useNextGames(gamesOnField, now)
 
   const timePassedMs = cGame ? now - cGame.startTime : -1
   const timePassed = cGame ? Math.floor(timePassedMs / 1000 / 60) : -1
