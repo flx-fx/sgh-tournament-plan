@@ -10,7 +10,13 @@ import Leaderboard from '@/components/leaderboard.jsx'
 import Autoplay from 'embla-carousel-autoplay'
 
 export default function App() {
-  const [emblaRef, emblaApi] = useEmblaCarousel()
+  const [emblaRef, emblaApi] = useEmblaCarousel({}, [
+    Autoplay({
+      delay: 10000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    }),
+  ])
   const [slideIndex, setSlideIndex] = useState(0)
 
   const scrollTo = useCallback(
