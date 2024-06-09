@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Slide from '@/components/slide.jsx'
 import Plan from '@/components/plan.jsx'
+import Leaderboard from '@/components/leaderboard.jsx'
 
 export default function App() {
   const [emblaRef, emblaApi] = useEmblaCarousel()
@@ -50,7 +51,9 @@ export default function App() {
             <Slide title="Turnierplan">
               <Plan />
             </Slide>
-            <Slide title="Leaderboard"></Slide>
+            <Slide title="Leaderboard">
+              <Leaderboard />
+            </Slide>
           </div>
         </div>
         <Card className="p-4">
