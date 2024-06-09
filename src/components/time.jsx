@@ -14,7 +14,7 @@ export default function Time({ className, ...props }) {
   })
 
   return (
-    <Card className={cn('flex flex-wrap bg-zinc-900 text-white', className)} {...props}>
+    <Card className={cn('flex flex-wrap border-zinc-600 bg-zinc-800 text-white', className)} {...props}>
       <p className="text-2xl font-bold">{time}</p>
       <p className="ml-auto text-2xl">SGH</p>
     </Card>

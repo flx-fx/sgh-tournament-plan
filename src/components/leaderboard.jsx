@@ -44,7 +44,7 @@ export default function Leaderboard({ className, ...props }) {
   ))
 
   return (
-    <div className={cn('flex h-full flex-col flex-wrap gap-3', className)} {...props}>
+    <div className={cn('flex h-fit flex-col flex-wrap gap-3 lg:h-full', className)} {...props}>
       {leaderboard}
     </div>
   )

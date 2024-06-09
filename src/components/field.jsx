@@ -62,7 +62,7 @@ export default function Field({ className, index, ...props }) {
               </div>
               {n2Game ? (
                 <>
-                  <div className="h-16 grow-0 border-l" />
+                  <Separator orientation="vertical" />
                   <div className="grow overflow-hidden">
                     <h5 className="truncate font-semibold">{n2Game.team1}</h5>
                     <h5 className="truncate font-semibold">{n2Game.team2}</h5>
