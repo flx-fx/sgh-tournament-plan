@@ -25,12 +25,15 @@ function transformGamesData(data) {
 export function useGames() {
   const [games, setGames] = useState([])
 
+  const fetchData = () => {
+    gamesParser.parse().then(data => {
+      setGames(transformGamesData(data))
+    })
+  }
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      gamesParser.parse().then(data => {
-        setGames(transformGamesData(data))
-      })
-    }, 7500)
+    fetchData()
+    const interval = setInterval(fetchData, 7500)
     return () => {
       clearInterval(interval)
     }

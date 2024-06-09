@@ -8,12 +8,15 @@ export const scoreParser = new PublicGoogleSheetsParser(import.meta.env.VITE_SHE
 export function useScores() {
   const [scores, setScores] = useState([])
 
+  const fetchData = () => {
+    scoreParser.parse().then(data => {
+      setScores(data)
+    })
+  }
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      scoreParser.parse().then(data => {
-        setScores(data)
-      })
-    }, 7500)
+    fetchData() // Fetch data immediately on component mount
+    const interval = setInterval(fetchData, 7500) // Then fetch data every 7.5 seconds
     return () => {
       clearInterval(interval)
     }
