@@ -4,10 +4,10 @@ import Card from '@/components/ui/card.jsx'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group.jsx'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useCallback, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import Slide from '@/components/slide.jsx'
 import Plan from '@/components/plan.jsx'
 import Leaderboard from '@/components/leaderboard.jsx'
+import Autoplay from 'embla-carousel-autoplay'
 
 export default function App() {
   const [emblaRef, emblaApi] = useEmblaCarousel()
@@ -65,9 +65,4 @@ export default function App() {
       </div>
     </div>
   )
-}
-
-Slide.propTypes = {
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node,
 }
