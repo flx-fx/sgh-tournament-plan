@@ -6,6 +6,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Slide from '@/components/slide.jsx'
+import Plan from '@/components/plan.jsx'
 
 export default function App() {
   const [emblaRef, emblaApi] = useEmblaCarousel()
@@ -46,7 +47,9 @@ export default function App() {
       <div className="flex grow flex-col gap-3">
         <div className="embla__viewport -m-2 grow overflow-hidden p-2" ref={emblaRef}>
           <div className="embla__container flex h-full">
-            <Slide title="Turnierplan"></Slide>
+            <Slide title="Turnierplan">
+              <Plan />
+            </Slide>
             <Slide title="Leaderboard"></Slide>
           </div>
         </div>
