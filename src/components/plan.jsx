@@ -25,7 +25,7 @@ export default function Plan({ className, ...props }) {
       <Box
         key={type}
         className={cn(
-          'flex grow flex-col gap-2 p-5',
+          'flex grow flex-col gap-2 p-4 lg:p-5',
           ['Halbfinale', 'Spiel um Platz 5', 'Spiel um Platz 3', 'Finale'].includes(type) ? 'lg:hidden' : '',
         )}
       >

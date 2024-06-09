@@ -51,13 +51,13 @@ export default function App() {
   return (
     <div
       className={cn(
-        'flex h-dvh flex-col gap-3 p-6 lg:flex-row',
+        'flex h-dvh flex-col gap-3 p-4 lg:flex-row lg:p-6',
         expanded ? 'overflow-hidden lg:overflow-y-scroll' : '',
       )}
     >
       <div
         className={cn(
-          'fixed left-0 top-0 z-20 w-full p-6 transition-all duration-500 lg:static lg:h-full lg:w-1/4 lg:p-0 lg:transition-none',
+          'fixed left-0 top-0 z-20 w-full p-4 transition-all duration-500 lg:static lg:h-full lg:w-1/4 lg:p-0 lg:transition-none',
           expanded ? '' : 'max-h-32 lg:max-h-full',
         )}
       >
@@ -98,7 +98,7 @@ export default function App() {
           />
         </div>
       </div>
-      <div className="mt-24 flex grow flex-col gap-3 lg:mt-0">
+      <div className="mt-20 flex grow flex-col gap-3 lg:mt-0">
         <div className="embla__viewport -m-2 grow overflow-hidden p-2" ref={emblaRef}>
           <div className="embla__container flex h-full">
             <Slide title="Turnierplan">
@@ -110,8 +110,8 @@ export default function App() {
           </div>
         </div>
         <div className="h-3 lg:hidden" />
-        <div className="sticky bottom-6 mx-4 mt-3 lg:static lg:mx-0">
-          <Card className="p-3 lg:p-4">
+        <div className="sticky bottom-6 mt-3 flex w-full justify-center lg:static lg:mx-0 lg:mt-0">
+          <Card className="w-fit p-3 lg:w-full lg:p-4">
             <ToggleGroup type="single" value={slideIndex + 1} onValueChange={handleToggleValueChange}>
               <ToggleGroupItem value={1}>Turnierplan</ToggleGroupItem>
               <ToggleGroupItem value={2}>Leaderboard</ToggleGroupItem>
