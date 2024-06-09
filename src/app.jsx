@@ -109,7 +109,6 @@ export default function App() {
             </Slide>
           </div>
         </div>
-        <div className="h-3 lg:hidden" />
         <div className="sticky bottom-6 mt-3 flex w-full justify-center lg:static lg:mx-0 lg:mt-0">
           <Card className="w-fit p-3 lg:w-full lg:p-4">
             <ToggleGroup type="single" value={slideIndex + 1} onValueChange={handleToggleValueChange}>
@@ -118,6 +117,11 @@ export default function App() {
             </ToggleGroup>
           </Card>
         </div>
+      </div>
+      <div className="w-full lg:hidden">
+        <p className="w-full px-16 pb-6 text-center text-zinc-600">
+          Technikgruppe des Staatlichen Gymnasiums Holzkirchen
+        </p>
       </div>
       <div
         className={cn(
