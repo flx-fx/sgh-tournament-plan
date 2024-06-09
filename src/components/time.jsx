@@ -1,6 +1,7 @@
-import { cn, useTime } from '@/lib/utils.js'
-import React from 'react'
+import { cn } from '@/lib/utils.js'
 import Card from '@/components/ui/card.jsx'
+import { useTime } from '@/lib/hooks/useTime.js'
+import PropTypes from 'prop-types'
 
 export default function Time({ className, ...props }) {
   const now = useTime()
@@ -18,4 +19,8 @@ export default function Time({ className, ...props }) {
       <p className="ml-auto text-2xl">SGH</p>
     </Card>
   )
+}
+
+Time.propTypes = {
+  className: PropTypes.string,
 }

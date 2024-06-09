@@ -2,10 +2,12 @@ import Card from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import Box from '@/components/ui/box.jsx'
 import { LucideClock } from 'lucide-react'
-import { cn, useTime } from '@/lib/utils.js'
+import { cn } from '@/lib/utils.js'
 import { Progress } from '@/components/ui/progress.jsx'
 import { Separator } from '@/components/ui/separator.jsx'
 import PropTypes from 'prop-types'
+import { useGames } from '@/lib/hooks/useGames.js'
+import { useTime } from '@/lib/hooks/useTime.js'
 
 function useRelevantGames(games, index, now) {
   const gamesOnField = games.filter(game => game.field === parseInt(index)).sort(game => game.startTime)
@@ -24,7 +26,8 @@ function getNextGame(games, currentGame, now) {
   return games.find(it => (currentGame ? it.startTime > currentGame.startTime : it.startTime > now))
 }
 
-export default function Field({ className, games, index, ...props }) {
+export default function Field({ className, index, ...props }) {
+  const games = useGames()
   const now = useTime()
   const { cGame, n1Game, n2Game } = useRelevantGames(games, index, now)
 
@@ -95,6 +98,5 @@ export default function Field({ className, games, index, ...props }) {
 
 Field.propTypes = {
   className: PropTypes.string,
-  games: PropTypes.array.isRequired,
   index: PropTypes.number.isRequired,
 }
