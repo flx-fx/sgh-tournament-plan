@@ -30,7 +30,7 @@ export default function Plan({ className, ...props }) {
         )}
       >
         <h3 className="text-lg font-bold tracking-tight">{type}</h3>
-        <div className="mx-3 grid auto-cols-auto grid-cols-[0.1fr_0.8fr_0.1fr_0.8fr_0.2fr]">
+        <div className="mx-1 grid auto-cols-auto grid-cols-[0.1fr_0.8fr_0.1fr_0.8fr_0.2fr] lg:mx-3 lg:gap-x-1">
           <h5 className="text-right font-semibold">Feld</h5>
           <h5 className="col-span-3 text-center font-semibold">Spielpaarung</h5>
           <h5 className="text-right font-semibold">Uhrzeit</h5>

@@ -20,8 +20,8 @@ export default function Leaderboard({ className, ...props }) {
   const leaderboard = Object.entries(scoresByType).map(([type, scores]) => (
     <Box key={type} className="flex grow flex-col gap-2 p-4 lg:p-5">
       <h3 className="text-lg font-bold tracking-tight">{type}</h3>
-      <div className="mx-3 grid auto-cols-auto grid-cols-[0.2fr_1fr_0.1fr_0fr_0.1fr_0.1fr_0.1fr] gap-x-3">
-        <h5 className="text-right font-semibold">Platz</h5>
+      <div className="mx-1 grid auto-cols-auto grid-cols-[0.1fr_1fr_0.1fr_0fr_0.1fr_0.1fr_0.1fr] gap-x-1 lg:mx-3">
+        <h5 className="text-center font-semibold">Pl.</h5>
         <h5 className="text-left font-semibold">Team</h5>
         <h5 className="text-center font-semibold">T</h5>
         <h5 className="text-center font-semibold"></h5>
@@ -30,7 +30,7 @@ export default function Leaderboard({ className, ...props }) {
         <h5 className="text-center font-semibold">P</h5>
         {scores.map((score, scoreIndex) => (
           <React.Fragment key={scoreIndex}>
-            <p className="text-right">{score.rank ? score.rank : '?'}.</p>
+            <p className="mr-1 text-right">{score.rank ? score.rank : '?'}.</p>
             <p className="truncate text-left">{score.team ? score.team : '?'}</p>
             <p className="text-center">{score.t ? score.t : '?'}</p>
             <p className="text-center">:</p>
