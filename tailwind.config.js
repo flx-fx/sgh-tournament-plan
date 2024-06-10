@@ -35,8 +35,6 @@ module.exports = {
     },
     fontFamily: {
       sans: ['"DM Sans"', 'sans-serif', 'ui-sans-serif', 'system-ui'],
-      brand: ['MuseoModerno'],
-      inter: ['Inter', 'sans-serif', 'ui-sans-serif', 'system-ui'],
     },
   },
   plugins: [require('tailwindcss-animate')],
