@@ -7,7 +7,7 @@ import Plan from '@/components/plan.jsx'
 import Leaderboard from '@/components/leaderboard.jsx'
 import Autoplay from 'embla-carousel-autoplay'
 import { ChevronDown } from 'lucide-react'
-import { cn } from '@/lib/utils.js'
+import { cn, isLargeScreen } from '@/lib/utils.js'
 import Field from '@/components/field.jsx'
 import Time from '@/components/time.jsx'
 
@@ -18,7 +18,7 @@ export default function App() {
     Autoplay({
       delay: 10000,
       stopOnInteraction: false,
-      stopOnMouseEnter: true,
+      isEnabled: isLargeScreen(),
     }),
   ])
   const [slideIndex, setSlideIndex] = useState(0)
@@ -29,6 +29,19 @@ export default function App() {
     },
     [emblaApi],
   )
+
+  const toggleAutoplay = useCallback(() => {
+    const autoplay = emblaApi?.plugins()?.autoplay
+    if (!autoplay) return
+
+    const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play
+    playOrStop()
+  }, [emblaApi])
+
+  useEffect(() => {
+    window.addEventListener('resize', toggleAutoplay)
+    return () => window.removeEventListener('resize', toggleAutoplay)
+  }, [toggleAutoplay])
 
   const handleToggleValueChange = useCallback(
     value => {

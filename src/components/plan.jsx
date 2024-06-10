@@ -29,17 +29,21 @@ export default function Plan({ className, ...props }) {
           ['Halbfinale', 'Spiel um Platz 5', 'Spiel um Platz 3', 'Finale'].includes(type) ? 'lg:hidden' : '',
         )}
       >
-        <h3 className="text-lg font-bold tracking-tight">{type}</h3>
-        <div className="mx-1 grid auto-cols-auto grid-cols-[0.1fr_0.8fr_0.1fr_0.8fr_0.2fr] lg:mx-3 lg:gap-x-1">
+        <h3 className="text-lg font-bold tracking-tight lg:-mt-2">{type}</h3>
+        <div className="mx-1 grid auto-cols-auto grid-cols-[0.1fr_0.8fr_0.1fr_0.8fr_0.2fr] gap-y-[1px] lg:mx-3 *:lg:px-0.5">
           <h5 className="text-right font-semibold">Feld</h5>
           <h5 className="col-span-3 text-center font-semibold">Spielpaarung</h5>
           <h5 className="text-right font-semibold">Uhrzeit</h5>
           {games.map((game, gameIndex) => {
-            const selected = nextGames.cGame ? (game.startTime === nextGames.cGame.startTime ? 'bg-red-100' : '') : ''
+            const selected = nextGames.cGames
+              ? nextGames.cGames.some(cGame => cGame.startTime === game.startTime)
+                ? 'bg-red-100'
+                : ''
+              : ''
 
             return (
               <React.Fragment key={gameIndex}>
-                <p className={cn('rounded-l-lg text-center', selected)}>{game.field ? game.field : '?'}</p>
+                <p className={cn('rounded-l-md text-center', selected)}>{game.field ? game.field : '?'}</p>
                 <p className={cn('truncate text-right', selected)}>{game.team1 ? game.team1 : '?'}</p>
                 <p className={cn('text-center font-semibold', selected)}>
                   <span className="mx-2">
@@ -47,7 +51,7 @@ export default function Plan({ className, ...props }) {
                   </span>
                 </p>
                 <p className={cn('truncate text-left', selected)}>{game.team2 ? game.team2 : '?'}</p>
-                <p className={cn('rounded-r-lg text-right', selected)}>
+                <p className={cn('rounded-r-md text-right', selected)}>
                   <span className="mr-2">{game.startTime ? game.startTime.toTimeString().slice(0, 5) : '--:--'}</span>
                 </p>
               </React.Fragment>

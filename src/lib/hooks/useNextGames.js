@@ -1,13 +1,13 @@
 export function useNextGames(games, now) {
   const gamesSorted = games.toSorted((a, b) => a.startTime - b.startTime)
-  const currentGames = gamesSorted.filter(game => {
+  const cGames = gamesSorted.filter(game => {
     return now >= game.startTime && now <= game.endTime
   })
-  const cGame = currentGames.length > 0 ? currentGames[0] : undefined
+  const cGame = cGames.length > 0 ? cGames[0] : undefined
   const n1Game = getNextGame(gamesSorted, cGame, now)
   const n2Game = getNextGame(gamesSorted, n1Game, now)
 
-  return { cGame, n1Game, n2Game }
+  return { cGames, cGame, n1Game, n2Game }
 }
 
 function getNextGame(games, currentGame, now) {
