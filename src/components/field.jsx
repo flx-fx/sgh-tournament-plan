@@ -14,7 +14,7 @@ export default function Field({ className, index, ...props }) {
   const games = useGames()
   const now = useTime()
 
-  const gamesOnField = games.filter(game => game.field === parseInt(index)).sort(game => game.startTime)
+  const gamesOnField = games.filter(game => game.field === parseInt(index))
   const { cGame, n1Game, n2Game } = useNextGames(gamesOnField, now)
 
   const timePassedMs = cGame ? now - cGame.startTime : -1
