@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import { useNextGames } from '@/lib/hooks/useNextGames.js'
 import { useTime } from '@/lib/hooks/useTime.js'
 
-export default function Field({ className, index, ...props }) {
+export default function FieldState({ className, index, ...props }) {
   const now = useTime()
   const { cGame, n1Game, n2Game } = useNextGames(parseInt(index))
 
@@ -78,7 +78,7 @@ export default function Field({ className, index, ...props }) {
   )
 }
 
-Field.propTypes = {
+FieldState.propTypes = {
   className: PropTypes.string,
   index: PropTypes.number.isRequired,
 }

@@ -8,7 +8,7 @@ import Leaderboard from '@/components/leaderboard.jsx'
 import Autoplay from 'embla-carousel-autoplay'
 import { ChevronDown } from 'lucide-react'
 import { cn, isLargeScreen } from '@/lib/utils.js'
-import Field from '@/components/field.jsx'
+import FieldState from '@/components/fieldState.jsx'
 import Time from '@/components/time.jsx'
 
 export default function App() {
@@ -75,14 +75,14 @@ export default function App() {
             expanded ? 'visible' : 'invisible lg:visible lg:h-full lg:max-h-full lg:overflow-y-auto',
           )}
         >
-          <Field
+          <FieldState
             index={1}
             className={cn(
               'shadow-none transition-opacity delay-0 duration-300 lg:shadow-df',
               expanded ? 'opacity-100' : 'opacity-0 delay-0 lg:opacity-100',
             )}
           />
-          <Field
+          <FieldState
             index={2}
             className={cn(
               'shadow-none transition-opacity delay-150 duration-300 lg:shadow-df',
