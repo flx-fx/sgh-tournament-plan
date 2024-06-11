@@ -17,8 +17,7 @@ export default function App() {
   const [emblaRef, emblaApi] = useEmblaCarousel({}, [
     Autoplay({
       delay: 10000,
-      stopOnInteraction: false,
-      isEnabled: isLargeScreen(),
+      playOnInit: isLargeScreen(),
     }),
   ])
   const [slideIndex, setSlideIndex] = useState(0)
@@ -29,19 +28,6 @@ export default function App() {
     },
     [emblaApi],
   )
-
-  const toggleAutoplay = useCallback(() => {
-    const autoplay = emblaApi?.plugins()?.autoplay
-    if (!autoplay) return
-
-    const playOrStop = autoplay.isPlaying() ? autoplay.stop : autoplay.play
-    playOrStop()
-  }, [emblaApi])
-
-  useEffect(() => {
-    window.addEventListener('resize', toggleAutoplay)
-    return () => window.removeEventListener('resize', toggleAutoplay)
-  }, [toggleAutoplay])
 
   const handleToggleValueChange = useCallback(
     value => {
