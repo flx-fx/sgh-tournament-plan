@@ -7,17 +7,15 @@ import { useNextGames } from '@/lib/hooks/useNextGames.js'
 
 export default function Plan({ className, ...props }) {
   const games = useGames()
-  const nextGames = useNextGames(games, new Date())
+  const { cGames } = useNextGames()
 
-  const gamesByType = games
-    ? games.reduce((acc, game) => {
-        if (!acc[game.type]) {
-          acc[game.type] = []
-        }
-        acc[game.type].push(game)
-        return acc
-      }, {})
-    : {}
+  const gamesByType = games.reduce((acc, game) => {
+    if (!acc[game.type]) {
+      acc[game.type] = []
+    }
+    acc[game.type].push(game)
+    return acc
+  }, {})
 
   const plan = Object.entries(gamesByType)
     .filter(([type]) => type !== 'Halbfinale1' && type !== 'Finale1' && type)
@@ -35,11 +33,7 @@ export default function Plan({ className, ...props }) {
           <h5 className="col-span-3 text-center font-semibold">Spielpaarung</h5>
           <h5 className="text-right font-semibold">Uhrzeit</h5>
           {games.map((game, gameIndex) => {
-            const selected = nextGames.cGames
-              ? nextGames.cGames.some(cGame => cGame.startTime === game.startTime)
-                ? 'bg-red-100'
-                : ''
-              : ''
+            const selected = cGames.some(cGame => cGame.startTime === game.startTime) ? 'bg-red-100' : ''
 
             return (
               <React.Fragment key={gameIndex}>

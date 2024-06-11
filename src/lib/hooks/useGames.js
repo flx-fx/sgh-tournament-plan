@@ -27,7 +27,7 @@ export function useGames() {
 
   const fetchData = () => {
     gamesParser.parse().then(data => {
-      setGames(transformGamesData(data))
+      if (data) setGames(transformGamesData(data))
     })
   }
 
