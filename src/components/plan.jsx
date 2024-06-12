@@ -33,7 +33,7 @@ export default function Plan({ className, ...props }) {
           <h5 className="col-span-3 text-center font-semibold">Spielpaarung</h5>
           <h5 className="text-right font-semibold">Uhrzeit</h5>
           {games.map((game, gameIndex) => {
-            const selected = cGames.some(cGame => cGame.startTime === game.startTime) ? 'bg-red-100' : ''
+            const selected = cGames.some(cGame => cGame.time === game.time) ? 'bg-red-100' : ''
 
             return (
               <React.Fragment key={gameIndex}>
