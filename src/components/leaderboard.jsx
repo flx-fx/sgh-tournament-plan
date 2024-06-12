@@ -36,12 +36,12 @@ export default function Leaderboard({ className, ...props }) {
             <p className={cn('rounded-l-md text-right', highlighted(type, scoreIndex))}>
               <span className="mr-1">{score.rank ? score.rank : '?'}.</span>
             </p>
-            <p className={cn('truncate text-left', highlighted(type, scoreIndex))}>{score.team ? score.team : '?'}</p>
-            <p className={cn('text-center', highlighted(type, scoreIndex))}>{score.t ? score.t : '?'}</p>
+            <p className={cn('truncate text-left', highlighted(type, scoreIndex))}>{score.team ? score.team : '0'}</p>
+            <p className={cn('text-center', highlighted(type, scoreIndex))}>{score.t ? score.t : '0'}</p>
             <p className={cn('text-center', highlighted(type, scoreIndex))}>:</p>
-            <p className={cn('text-center', highlighted(type, scoreIndex))}>{score.g ? score.g : '?'}</p>
-            <p className={cn('text-center', highlighted(type, scoreIndex))}>{score.d ? score.d : '?'}</p>
-            <p className={cn('rounded-r-md text-center', highlighted(type, scoreIndex))}>{score.p ? score.p : '?'}</p>
+            <p className={cn('text-center', highlighted(type, scoreIndex))}>{score.g ? score.g : '0'}</p>
+            <p className={cn('text-center', highlighted(type, scoreIndex))}>{score.d ? score.d : '0'}</p>
+            <p className={cn('rounded-r-md text-center', highlighted(type, scoreIndex))}>{score.p ? score.p : '0'}</p>
           </React.Fragment>
         ))}
       </div>
