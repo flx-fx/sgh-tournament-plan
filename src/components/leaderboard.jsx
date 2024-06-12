@@ -18,7 +18,13 @@ export default function Leaderboard({ className, ...props }) {
     : {}
 
   const highlighted = (type, index) =>
-    type === 'Hauptrunde' && index < 4 ? 'bg-orange-100' : type === 'Hauptrunde' && index >= 4 ? 'bg-zinc-100' : ''
+    type === 'Hauptrunde' && index < 4
+      ? 'bg-orange-100'
+      : type === 'Hauptrunde' && index >= 4
+        ? 'bg-zinc-100'
+        : /Vorrunde - \w+/g.test(type) && index < 2
+          ? 'bg-red-50'
+          : ''
 
   const leaderboard = Object.entries(scoresByType).map(([type, scores]) => (
     <Box key={type} className="flex grow flex-col gap-2 p-4 lg:p-5">
@@ -52,6 +58,10 @@ export default function Leaderboard({ className, ...props }) {
     <div className={cn('flex h-fit flex-col flex-wrap gap-3 lg:h-full', className)} {...props}>
       {leaderboard}
       <Box className="p-4">
+        <span className="flex flex-row items-center gap-1">
+          <div className="h-5 w-5 rounded-md bg-red-50" />
+          <p>= Einzug in Hauptrunde</p>
+        </span>
         <span className="flex flex-row items-center gap-1">
           <div className="h-5 w-5 rounded-md bg-orange-100" />
           <p>= Einzug ins Halbfinale</p>
