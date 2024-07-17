@@ -77,6 +77,7 @@ export default function App() {
         >
           <FieldState
             index={1}
+            name="Kunstrasen"
             className={cn(
               'shadow-none transition-opacity delay-0 duration-300 lg:shadow-df',
               expanded ? 'opacity-100' : 'opacity-0 delay-0 lg:opacity-100',
@@ -84,6 +85,7 @@ export default function App() {
           />
           <FieldState
             index={2}
+            name="Hartplatz"
             className={cn(
               'shadow-none transition-opacity delay-150 duration-300 lg:shadow-df',
               expanded ? 'opacity-100' : 'opacity-0 delay-0 lg:opacity-100',

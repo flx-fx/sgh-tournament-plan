@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import { useNextGames } from '@/lib/hooks/useNextGames.js'
 import { useTime } from '@/lib/hooks/useTime.js'
 
-export default function FieldState({ className, index, ...props }) {
+export default function FieldState({ className, index, name, ...props }) {
   const now = useTime()
   const { cGame, n1Game, n2Game } = useNextGames(parseInt(index))
 
@@ -20,7 +20,7 @@ export default function FieldState({ className, index, ...props }) {
   return (
     <Card className={cn('flex flex-col gap-3 bg-white', className)} {...props}>
       <span className="flex items-center gap-2">
-        <h3 className="text-2xl font-bold tracking-tight">Feld {index}</h3>
+        <h3 className="text-2xl font-bold tracking-tight">{name ? name : `Feld ${index}`}</h3>
         {cGame ? <Badge className="bg-red-300">{cGame.type}</Badge> : ''}
         {timePassed !== -1 ? (
           <p className="ml-auto text-2xl font-medium text-zinc-500">

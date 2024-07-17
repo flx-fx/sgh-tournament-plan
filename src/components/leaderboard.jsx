@@ -18,11 +18,11 @@ export default function Leaderboard({ className, ...props }) {
     : {}
 
   const highlighted = (type, index) =>
-    type === 'Hauptrunde' && index < 4
+    type === 'Gruppendritte' && index < 2
       ? 'bg-orange-100'
-      : type === 'Hauptrunde' && index >= 4
-        ? 'bg-zinc-100'
         : /Vorrunde - \w+/g.test(type) && index < 2
+          ? 'bg-orange-100'
+        : /Vorrunde - \w+/g.test(type) && index > 1 && index < 3
           ? 'bg-red-50'
           : ''
 
@@ -42,7 +42,7 @@ export default function Leaderboard({ className, ...props }) {
             <p className={cn('rounded-l-md text-right', highlighted(type, scoreIndex))}>
               <span className="mr-1">{score.rank ? score.rank : '?'}.</span>
             </p>
-            <p className={cn('truncate text-left', highlighted(type, scoreIndex))}>{score.team ? score.team : '0'}</p>
+            <p className={cn('truncate text-left', highlighted(type, scoreIndex))}>{score.team ? score.team : '-'}</p>
             <p className={cn('text-center', highlighted(type, scoreIndex))}>{score.t ? score.t : '0'}</p>
             <p className={cn('text-center', highlighted(type, scoreIndex))}>:</p>
             <p className={cn('text-center', highlighted(type, scoreIndex))}>{score.g ? score.g : '0'}</p>
@@ -59,16 +59,16 @@ export default function Leaderboard({ className, ...props }) {
       {leaderboard}
       <Box className="p-4">
         <span className="flex flex-row items-center gap-1">
-          <div className="h-5 w-5 rounded-md bg-red-50" />
-          <p>= Einzug in Hauptrunde</p>
+          <div className="h-5 w-5 rounded-md bg-orange-100" />
+          <p>= Einzug in Viertelfinale</p>
         </span>
         <span className="flex flex-row items-center gap-1">
-          <div className="h-5 w-5 rounded-md bg-orange-100" />
-          <p>= Einzug ins Halbfinale</p>
+          <div className="h-5 w-5 rounded-md bg-red-50" />
+          <p>= Siehe Gruppendritte</p>
         </span>
         <span className="flex flex-row items-center gap-1">
           <div className="h-5 w-5 rounded-md bg-zinc-100" />
-          <p>= Spiel um Platz 5</p>
+          <p>= Platzierungsrunde</p>
         </span>
       </Box>
     </div>
