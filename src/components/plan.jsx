@@ -24,7 +24,7 @@ export default function Plan({ className, ...props }) {
         key={type}
         className={cn(
           'flex grow flex-col gap-2 p-4 lg:p-5',
-          ['', 'Spiel um Platz 5', 'Spiel um Platz 3', ''].includes(type) ? 'lg:hidden' : '',
+          [].includes(type) ? 'lg:hidden' : '',
         )}
       >
         <h3 className="text-lg font-bold tracking-tight lg:-mt-2">{type}</h3>
@@ -33,7 +33,8 @@ export default function Plan({ className, ...props }) {
           <h5 className="col-span-3 text-center font-semibold">Spielpaarung</h5>
           <h5 className="text-right font-semibold">Uhrzeit</h5>
           {games.map((game, gameIndex) => {
-            const selected = cGames.some(cGame => cGame.time === game.time) ? 'bg-red-100' : ''
+            const selected = cGames.some(cGame => cGame.startTime === game.startTime) ? 'bg-red-100' : ''
+
 
             return (
               <React.Fragment key={gameIndex}>
