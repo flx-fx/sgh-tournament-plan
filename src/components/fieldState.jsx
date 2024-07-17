@@ -52,16 +52,16 @@ export default function FieldState({ className, index, name, ...props }) {
           <Box className="relative overflow-hidden p-3">
             <div className="flex gap-3">
               <div className="grow overflow-hidden">
-                <h5 className="truncate font-semibold">{n1Game.team1}</h5>
-                <h5 className="truncate font-semibold">{n1Game.team2}</h5>
+                <h5 className="truncate font-semibold leading-tight">{n1Game.team1}</h5>
+                <h5 className="truncate font-semibold leading-tight"><span className="font-normal">vs. </span>{n1Game.team2}</h5>
                 <p>{n1Game.startTime.toTimeString().slice(0, 5)}</p>
               </div>
               {n2Game ? (
                 <>
                   <div className="h-16 border-l" />
                   <div className="grow overflow-hidden">
-                    <h5 className="truncate font-semibold">{n2Game.team1}</h5>
-                    <h5 className="truncate font-semibold">{n2Game.team2}</h5>
+                    <h5 className="truncate font-semibold leading-tight">{n2Game.team1}</h5>
+                    <h5 className="truncate font-semibold leading-tight"><span className="font-normal">vs. </span>{n2Game.team2}</h5>
                     <p>{n2Game.startTime.toTimeString().slice(0, 5)}</p>
                   </div>
                 </>
