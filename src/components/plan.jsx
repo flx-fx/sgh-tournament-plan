@@ -37,7 +37,7 @@ export default function Plan({ className, ...props }) {
 
             return (
               <React.Fragment key={gameIndex}>
-                <p className={cn('rounded-l-md text-left', selected)}>{game.field ? game.field : '?'}</p>
+                <p className={cn('rounded-l-md text-left', selected)}>{game.fieldName ? game.fieldName : '?'}</p>
                 <p className={cn('truncate text-right', selected)}>{game.team1 ? game.team1 : '?'}</p>
                 <p className={cn('text-center font-semibold', selected)}>
                   <span className="mx-2">

@@ -8,6 +8,8 @@ const gamesParser = new PublicGoogleSheetsParser(import.meta.env.VITE_SHEET_ID, 
 function transformGamesData(data) {
   return data.map(game => {
     let newGame = game
+    newGame.fieldName = game.field
+    game.field === 'Kunstrasen' ? newGame.field = 1 : newGame.field = 2
     const [startTime, endTime] = [game.start_time, game.end_time].map(time => {
       const [h, m] = time.split(':').map(it => parseInt(it))
       const date = new Date()
