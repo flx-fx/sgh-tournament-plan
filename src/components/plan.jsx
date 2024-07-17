@@ -32,9 +32,8 @@ export default function Plan({ className, ...props }) {
           <h5 className="text-left font-semibold">Feld</h5>
           <h5 className="col-span-3 text-center font-semibold">Spielpaarung</h5>
           <h5 className="text-right font-semibold">Uhrzeit</h5>
-          {games.map((game, gameIndex) => {
+          {games.map((game, gameIndex) => {if(game.team1 === 'Ismaning' || game.team2 === 'Ismaning') {return('')} else {
             const selected = cGames.some(cGame => cGame.startTime === game.startTime) ? 'bg-red-100' : ''
-
 
             return (
               <React.Fragment key={gameIndex}>
@@ -50,7 +49,7 @@ export default function Plan({ className, ...props }) {
                   <span className="mr-2">{game.startTime ? game.startTime.toTimeString().slice(0, 5) : '--:--'}</span>
                 </p>
               </React.Fragment>
-            )
+            )}
           })}
         </div>
       </Box>
