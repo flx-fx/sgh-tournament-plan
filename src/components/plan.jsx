@@ -1,5 +1,5 @@
 import Box from '@/components/ui/box.jsx'
-import { cn } from '@/lib/utils.js'
+import { cn, isLargeScreen } from '@/lib/utils.js'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useGames } from '@/lib/hooks/useGames.js'
@@ -38,7 +38,7 @@ export default function Plan({ className, ...props }) {
 
             return (
               <React.Fragment key={gameIndex}>
-                <p className={cn('rounded-l-md text-left', selected)}>{game.fieldName ? game.fieldName : '?'}</p>
+                <p className={cn('rounded-l-md text-left', selected)}>{game.fieldName ? isLargeScreen() ? game.fieldName : game.fieldName === 'Hartplatz' ? 'HP' : 'KR' : '?'}</p>
                 <p className={cn('truncate text-right', selected)}>{game.team1 ? game.team1 : '?'}</p>
                 <p className={cn('text-center font-semibold', selected)}>
                   <span className="mx-2">
